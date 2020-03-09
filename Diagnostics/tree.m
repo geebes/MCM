@@ -152,5 +152,5 @@ ax.ZTick=[];
 set(gcf,'Color','w')
 
     
-sname=['Figures/Tree.png'];
+sname=['../Figures/Tree.png'];
 export_fig(sname,'-r500')

@@ -1,6 +1,7 @@
-clear
+clear 
 clc
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 MCM_initialise
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define simulation parameters
@@ -20,10 +21,10 @@ iseed = (find(eco_pars.unq_ESD<2)-1).*eco_pars.ntroph+1; % Strict Auto + ESD<2
 % iseed = find(eco_pars.ESD<2); % All trophic strategies if ESD<2
 % iseed = []; % Everything is Everywhere
 
-Output_fdir = ['Run_N' num2str(eco_pars.Nsupply) '_Kappa_' num2str(eco_pars.kappa) '_' datestr(now,'yyyy_mm_dd')]
+Output_fdir = ['Run_N' num2str(eco_pars.Nsupply) '_Kappa_' num2str(eco_pars.kappa) '_' datestr(now,'yyyy_mm_dd')];
 if exist(['Output/' Output_fdir])==0
-    mkdir(['Output/' Output_fdir])
-    mkdir(['Output/' Output_fdir '/Figures'])
+    mkdir(['Output/' Output_fdir]);
+    mkdir(['Output/' Output_fdir '/Figures']);
 end
 %% Initial conditions
 N_0 = eco_pars.Nsupply;
@@ -90,9 +91,7 @@ for k=1:n_ode_iterations
     v0=yout(end,:);
     
     % Save Output
-    tic
     save(['Output/' Output_fdir '/Workspace_dump.mat'],'data','eco_pars','nyears','years_per_iteration','iseed','dead','minphy')
-    toc
     disp(['Year = ' num2str(k.*ndays_per_iteration./365) '; ' num2str(toc) ' seconds.'])
 end
 
